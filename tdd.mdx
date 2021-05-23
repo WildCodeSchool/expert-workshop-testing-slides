@@ -1,0 +1,186 @@
+import {CodeSurfer,CodeSurferColumns,Step} from "code-surfer";
+import { github, vsDark } from "@code-surfer/themes";
+export const theme = vsDark;
+const boldStyle = {"color": "orange"};
+const paragraphStyle = { 
+    "text-align": "justify", 
+    "width": "50%", 
+    "margin": "auto", 
+    "font-size": "2rem", 
+    "line-height": "2.5rem"
+};
+
+# Apprendre le TDD 👋
+
+---
+
+## C'est quoi le TDD ? 
+
+---
+
+<div style={paragraphStyle}>
+    <p>
+    C'est l'art d'écrire son code <strong style={boldStyle}>de façon incrémentale</strong> en 
+    étant piloté par les tests. Ainsi on reste <strong style={boldStyle}>en permanence proche des problématiques 
+    métiers.</strong>
+    </p>
+</div>
+
+---
+
+Prenons le problème classique du "fizzbuzz"
+
+---
+
+<CodeSurfer>
+
+```ts file=./src/tdd/fizzbuzz.problem.ts title="Le fizzbuzz" subtitle="Premièrement, exposons le problème"
+```
+
+</CodeSurfer>
+
+---
+
+<div style={paragraphStyle}>
+    <p>
+    On peut constater que le problème du fizzbuzz peut se résoudre assez facilement.
+    En effet, <strong style={boldStyle}>le nombre de cas utilisateurs différents est assez limité.</strong>
+    C'est donc un parfait premier exercice pour écrire nos premiers tests.
+    </p>
+</div>
+
+---
+
+<div style={paragraphStyle}>
+    <p>
+    Il est  possible d'écrire tous nos tests à la main, mais il existe <strong style={boldStyle}>des outils dédiés</strong>.
+    Notre choix va se porter sur ... 
+    </p>
+</div>
+
+---
+
+[Le framework Jest](https://jestjs.io/fr/)
+
+---
+
+Jest est un framework de test JavaScript de qualité qui met l'accent sur la simplicité.
+
+---
+
+<CodeSurfer>
+
+```bash title="Installer jest" subtitle="installer jest avec npm"
+# Pour installer jest avec npm, tapez la commande suivante:
+npm install --save-dev jest
+```
+
+```bash title="Configurer jest" subtitle="initialiser jest"
+# Pour installer jest avec npm, tapez la commande suivante:
+npm install --save-dev jest
+
+# Pour configurer jest, tapez la commande suivante: 
+jest --init
+
+# La configuration par défaut devrait convenir.
+```
+
+```json title="Utiliser jest" subtitle="configurer le package.json"
+{
+  "private": true,
+  ...
+  "scripts": {
+    ...
+    "test": "jest"
+  }
+}
+
+```
+
+</CodeSurfer>
+
+---
+
+<div style={paragraphStyle}>
+    <p>
+    À partir de maintenant nous allons écrire notre suite de tests.
+    Nous procéderons étape par étape, et répondrons à chaque cas utilisateur
+    De la façon la plus simple qui soit.
+    </p>
+</div>
+
+---
+
+<div style={paragraphStyle}>
+    <p>
+    En TDD, <strong style={boldStyle}>les erreurs de compilation comptent, </strong> on les range dans la catégorie des 
+    <strong style={boldStyle}> tests statiques.</strong> Un test statique est un test qui peut être résolu 
+    <strong style={boldStyle}>sans démarrer le code.</strong> Cela peut comprendre les erreurs de syntaxe, de compilation, d'imports etc. Ici, notre fonction fizzbuzz, <strong style={boldStyle}>n'existe pas encore</strong>, nous devons donc résoudre ce soucis. 
+    </p>
+</div>
+
+---
+
+<CodeSurfer>
+
+```ts file=./src/tdd/fizzbuzz1.spec.ts title="On doit pouvoir utiliser la fonction" subtitle="Premier test"
+```
+
+```ts file=./src/tdd/fizzbuzz.solution1.ts title="On doit pouvoir utiliser la fonction" subtitle="Le code minimum"
+```
+
+</CodeSurfer>
+
+---
+
+Et voilà, nous avons crée notre premier test et nous l'avons passé avec succès !
+
+---
+
+Maintenant, continuons comme cela jusqu'à ce que l'on ait couvert tous les uses cases.
+
+---
+
+<CodeSurfer>
+
+```ts file=./src/tdd/fizzbuzz2.spec.ts title="On doit pouvoir utiliser la fonction" subtitle="2ème test"
+```
+
+```ts file=./src/tdd/fizzbuzz.solution2.ts title="On doit pouvoir utiliser la fonction" subtitle="Le code minimum"
+```
+
+```ts file=./src/tdd/fizzbuzz3.spec.ts title="On doit pouvoir utiliser la fonction" subtitle="3ème test"
+```
+
+```ts file=./src/tdd/fizzbuzz.solution3.ts title="On doit pouvoir utiliser la fonction" subtitle="Le code minimum"
+```
+
+```ts file=./src/tdd/fizzbuzz4.spec.ts title="On doit pouvoir utiliser la fonction" subtitle="4ème test"
+```
+
+```ts file=./src/tdd/fizzbuzz.solution4.ts title="On doit pouvoir utiliser la fonction" subtitle="Le code minimum"
+```
+
+```ts file=./src/tdd/fizzbuzz5.spec.ts title="On doit pouvoir utiliser la fonction" subtitle="5ème test"
+```
+
+```ts file=./src/tdd/fizzbuzz.solution5.ts title="On doit pouvoir utiliser la fonction" subtitle="Le code minimum"
+```
+
+</CodeSurfer>
+
+---
+
+<div style={paragraphStyle}>
+    <p>
+        Tu noteras que les tests, tels qu'ils ont été codés, sont très <strong style={boldStyle}>naïfs</strong>.
+        On décrit seulement quelques cas utilisateurs, et on ignore volontiers ceux qui pourraient nous gêner 
+        de prime abord. Tu pourrais simplifier et améliorer ces tests, d'ailleurs, c'est le sujet de ton premier TP =), have fun !
+    </p>
+</div>
+
+---
+
+# À toi de jouer !
+
+Crée un test moins naïf de fizzbuzz pour tous les nombres de 0 à 100.
